@@ -1,0 +1,36 @@
+.container {
+  width: 1100px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.post {
+  text-align: center;
+}
+
+.btn {
+  background-color: red;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 30px;
+  transition: 0.3s all;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(228, 149, 149);
+    color: #000;
+  }
+}
+
+.form {
+  margin-bottom: 30px;
+}
+
+.editor {
+  margin-bottom: 30px;
+}
+
+.validity {
+  color: red;
+}

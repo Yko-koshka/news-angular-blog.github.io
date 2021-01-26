@@ -1,0 +1,62 @@
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url("../images/photo_2021-01-25_12-39-47.jpg");
+  background-size: cover;
+}
+
+.mat-card-content,
+.mat-card-content img {
+  height: 160px;
+  text-align: center;
+}
+
+.paginator {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.mat-card-content {
+  width: 29em;
+  height: 21em;
+  overflow: visible;
+}
+
+.mat-card-actions {
+  position: absolute;
+  right: 8px;
+  bottom: 3px;
+  width: 432px;
+  height: 61px;
+  background-color: #424242;
+}
+
+.example-card {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.btn {
+  width: 100px;
+  height: 30px;
+  background-color: #eb4d63;
+  color: white;
+  border: none;
+  margin: 10px;
+}

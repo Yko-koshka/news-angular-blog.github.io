@@ -1,0 +1,34 @@
+<p>edit works!</p>
+<div class="container">
+    <button class="btn" routerLink="/posts">Назад</button>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div 
+        class="form" 
+        [ngClass]="{invalid: form.get('title')?.touched && form.get('title')?.invalid}"
+        >
+            <label for="title" class="label">Название поста:</label>
+            <input id="title" tipe="text" formControlName="title" class="input">
+            <div *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
+                <small class="validity" *ngIf="form.get('title')?.errors?.required">Введите название поста</small>
+            </div>
+        </div>
+
+        <div class="editor">
+            <label>Контент поста:</label>
+            <quill-editor formControlName="text" [styles]="{height: '500px'}"></quill-editor>
+        </div>
+
+        <div 
+        class="form" 
+        [ngClass]="{invalid: form.get('author')?.touched && form.get('author')?.invalid}"
+        >
+            <label for="author" class="label">Имя автора:</label>
+            <input id="author" tipe="text" formControlName="author" class="input">
+            <div *ngIf="form.get('author')?.touched && form.get('author')?.invalid">
+                <small class="validity" *ngIf="form.get('author')?.errors?.required">Введите введите имя автора</small>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="form.invalid || submitted">Обновить</button>
+    </form>
+</div>
