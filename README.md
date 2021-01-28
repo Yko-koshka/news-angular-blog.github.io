@@ -1,5 +1,3 @@
-Link to github pages: https://yko-koshka.github.io/news-angular-blog.github.io/
-
 # NewsBlog
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
