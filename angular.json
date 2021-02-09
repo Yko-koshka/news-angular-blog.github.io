@@ -19,6 +19,11 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+          "stylePreprocessorOptions": {
+            "includePaths": [
+              "../src/assets/scss/base"
+            ]
+          },
           "options": {
             "outputPath": "dist/news-blog",
             "index": "src/index.html",
@@ -31,7 +36,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "src/styles.scss",
+              "node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "node_modules/quill/dist/quill.core.css",
               "node_modules/quill/dist/quill.bubble.css",
               "node_modules/quill/dist/quill.snow.css"
@@ -99,7 +105,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "src/styles.scss",
+              "node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "node_modules/quill/dist/quill.core.css",
               "node_modules/quill/dist/quill.bubble.css",
               "node_modules/quill/dist/quill.snow.css"

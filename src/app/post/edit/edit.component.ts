@@ -1,18 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators'
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators'
 import { Post } from 'src/environments/interface';
-import { PostsService } from '../posts.service';
-
-const post: Post = {
-  title: '',
-  img: '',
-  text: '',
-  author: '',
-  id: 0,
-};
+import { PostsService } from '../../posts.service';
 
 @Component({
   selector: 'app-edit',
@@ -20,40 +12,30 @@ const post: Post = {
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit, OnDestroy{
-  form: FormGroup;
+  form: FormGroup = new FormGroup({
+    title: new FormControl('', Validators.required),
+    text: new FormControl('', Validators.required),
+    author: new FormControl('', Validators.required),
+  });
 
-  // id = null;
-
-  post: Post = post;
-  submitted = false;
   uSub!: Subscription;
-
-  id$: Observable<any> = this.route.paramMap.pipe(
-    filter((route: any) => !!route.params.id),
-    map((route: any) => route.params.id)
-    );
+  id = 0;
 
   constructor(
     public route: ActivatedRoute,
     private postsService: PostsService,
     private router: Router
-  ) {
-    this.form = new FormGroup({
-      title: new FormControl(post.title, Validators.required),
-      text: new FormControl(post.text, Validators.required),
-      author: new FormControl(post.author, Validators.required),
-    })
-  }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.pipe(switchMap((params: Params) => {
+      this.id = params['id'];
       return this.postsService.getById(params['id'])
     })).subscribe((post: Post) => {
-      this.post = post
-      this.form = new FormGroup({
-        title: new FormControl(post.title, Validators.required),
-        text: new FormControl(post.text, Validators.required),
-        author: new FormControl(post.author, Validators.required)
+      this.form.patchValue({        
+        title:post.title,
+        text: post.text,
+        author:post.author,
       })
     })
   }
@@ -69,16 +51,13 @@ export class EditComponent implements OnInit, OnDestroy{
       return
     }
 
-    this.submitted = true
-
     this.uSub = this.postsService.update({
-      ...this.post,
+      id: this.id,
       text: this.form.value.text,
       title: this.form.value.title,
       author: this.form.value.author
     }).subscribe(() => {
-      this.submitted = false
-      this.router.navigate(['/posts'])
+      this.router.navigate(['/posts']);
     })
   }
 

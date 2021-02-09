@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+// import { Subscription } from 'rxjs';
 import { Post } from 'src/environments/interface';
 import { PostsService } from '../posts.service';
 import { ViewEncapsulation } from '@angular/core'
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -12,48 +11,33 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrls: ['./posts.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PostsComponent implements OnInit, OnDestroy {
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+
+export class PostsComponent implements OnInit {
 
   posts: Post[] = [];
   pSub: Subscription = new Subscription;
   dSub: Subscription = new Subscription;
-  public pageSlice = this.posts.slice(0, 3);
 
-  constructor(private postsService: PostsService) {}
+  constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
     this.pSub = this.postsService.getAll().subscribe(posts => {
-      this.posts = posts
+      this.posts = posts;
     })
   }
 
   remove(id: number) {
     this.dSub = this.postsService.remove(id).subscribe(() => {
-      this.posts = this.posts.filter(post => post.id !== id)
+      this.posts = this.posts.filter(post => post.id !== id);
     })
   }
-
-  onPageChange(event: PageEvent) {
-    console.log(event)
-    
-    const startIndex = event.pageIndex * event.pageSize;
-    let endIndex = startIndex + event.pageSize;
-    if(endIndex > this.posts.length) {
-      endIndex = this.posts.length;
-    }
-
-    this.pageSlice = this.posts.slice(startIndex, endIndex);
-
-  }
-
+  
   ngOnDestroy() {
-    if(this.pSub) {
+    if (this.pSub) {
       this.pSub.unsubscribe()
     }
 
-    if(this.dSub) {
+    if (this.dSub) {
       this.dSub.unsubscribe()
     }
   }

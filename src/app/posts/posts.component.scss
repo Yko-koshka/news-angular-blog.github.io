@@ -4,14 +4,10 @@
   justify-content: space-around;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 50px 0;
-}
-
 .example-card {
+  position: relative;
   max-width: 400px;
+  margin-bottom: 50px;
 }
 
 .example-header-image {
@@ -25,17 +21,11 @@
   text-align: center;
 }
 
-.paginator {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-}
-
 .mat-card-content {
   width: 29em;
   height: 21em;
-  overflow: visible;
+  overflow: hidden;
+  font-size: 14px;
 }
 
 .mat-card-actions {
@@ -47,16 +37,14 @@
   background-color: #424242;
 }
 
-.example-card {
-  position: relative;
-  margin-bottom: 50px;
+.mat-stroked-button {
+  right: -80px;
+  bottom: -10px;
 }
 
-.btn {
-  width: 100px;
-  height: 30px;
-  background-color: #eb4d63;
-  color: white;
-  border: none;
-  margin: 10px;
+.paginator {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }

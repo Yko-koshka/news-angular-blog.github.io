@@ -1,4 +1,4 @@
-<div  class="container">
+<div class="container" >
   <div class="posts">
     <div *ngFor="let post of posts">
         <mat-card class="example-card">
@@ -11,35 +11,13 @@
             <div [innerHTML]="post.text"></div>
           </mat-card-content>
           <mat-card-actions>
-            <button class="btn" mat-button (click)="remove(post.id)">Удалить</button>
-            <button class="btn" mat-button [routerLink]="['/post', post.id, 'edit' ]">Открыть</button>
+            <button mat-stroked-button color="primary" (click)="remove(post.id)">Удалить</button>
+            <button mat-stroked-button color="primary" [routerLink]="['/post', post.id ]">Открыть</button>
+            <button mat-stroked-button color="primary" [routerLink]="['/post', post.id, 'edit' ]">Редактировать</button>
           </mat-card-actions>
       </mat-card>
     </div>
   </div>
 </div>
 
-<mat-paginator [length]="this.posts.length"
-              [pageSize]="3"
-              [pageSizeOptions]="[3, 6, 9]"
-              (page)="onPageChange($event)"
-              class="paginator">
-</mat-paginator>
 
-
-
-
-
-
-<!-- <div class="post">
-    <img src="https://klike.net/uploads/posts/2019-03/medium/1551512888_2.jpg" alt="image">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, totam? Consectetur officia minus magnam magni aperiam, repellendus aliquid tempora ipsam.</p>
-    <button [routerLink]="[ '/post', 10 ]" class="btn">Открыть</button>
-    <button class="btn2">Удалить</button>
-</div>
-<div class="post">
-    <img src="https://bipbap.ru/wp-content/uploads/2017/11/crop-1.jpg" alt="image">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, totam? Consectetur officia minus magnam magni aperiam, repellendus aliquid tempora ipsam.</p>
-    <button [routerLink]="[ '/post', 8 ]" class="btn">Открыть</button>
-    <button class="btn2">Удалить</button>
-</div> -->
