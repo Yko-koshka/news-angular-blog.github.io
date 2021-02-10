@@ -10,7 +10,6 @@ import { Post } from 'src/environments/interface';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent {
-
   post$: Observable<Post> = this.route.params
   .pipe(switchMap((params: Params) => {
     return this.postsService.getById(params['id']);

@@ -34,11 +34,11 @@ export class PostsComponent implements OnInit {
   
   ngOnDestroy() {
     if (this.pSub) {
-      this.pSub.unsubscribe()
+      this.pSub.unsubscribe();
     }
 
     if (this.dSub) {
-      this.dSub.unsubscribe()
+      this.dSub.unsubscribe();
     }
   }
 

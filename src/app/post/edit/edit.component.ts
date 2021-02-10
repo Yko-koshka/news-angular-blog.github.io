@@ -11,7 +11,7 @@ import { PostsService } from '../../posts.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
-export class EditComponent implements OnInit, OnDestroy{
+export class EditComponent implements OnInit, OnDestroy {
   form: FormGroup = new FormGroup({
     title: new FormControl('', Validators.required),
     text: new FormControl('', Validators.required),
@@ -35,7 +35,7 @@ export class EditComponent implements OnInit, OnDestroy{
       this.form.patchValue({        
         title:post.title,
         text: post.text,
-        author:post.author,
+        author:post.author
       })
     })
   }

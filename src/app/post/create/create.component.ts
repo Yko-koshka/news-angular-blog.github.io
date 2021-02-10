@@ -30,8 +30,7 @@ export class CreateComponent {
     const post: any = {
       title: this.form.value.title,
       author: this.form.value.author,
-      text: this.form.value.text,
-      // date: new Date()
+      text: this.form.value.text
       
     };
 
